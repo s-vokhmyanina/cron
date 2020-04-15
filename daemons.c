@@ -5,7 +5,15 @@
 #include <stdbool.h>
 #include <fcntl.h>
 #include <syslog.h>
- 
+#include <limits.h>
+#include <string.h>
+#include <sys/wait.h>
+#include <semaphore.h>
+
+#define MAX_COUNT_CMD 10
+
+sem_t sema;
+
 bool sig_alarm = false;
 bool sig_term = false;
  
@@ -26,10 +34,11 @@ int Daemon(char* argv[])
        
     signal(SIGALRM, signal_alarm_handler);
     signal(SIGTERM, signal_term_handler);
+    signal(SIGCLD, SIG_IGN);					
     int flag = 0;
-    int fd = open("/tmp/mes.daemon.txt", O_CREAT|O_RDWR|O_APPEND, S_IRWXU);
-    ftruncate(fd,0);
-   
+    int mes = open("/tmp/mes.daemon.txt", O_CREAT|O_RDWR|O_APPEND, S_IRWXU);
+    ftruncate(mes,0);
+	sem_init(&sema, 1, 1);
     char buf[] = " ~ALARM~ \n";
    
     while(1)
@@ -37,79 +46,154 @@ int Daemon(char* argv[])
         pause();
         if (sig_alarm == true)
         {
-            write(fd, buf, sizeof(buf));
+            write(mes, buf, sizeof(buf));
             syslog (LOG_NOTICE, " ~ALARM~ ");
             FILE *fp;
             int max_in = 256;
             char input[max_in];
+            char cmd[MAX_COUNT_CMD][max_in];
+            
             char stroka[max_in];
             
             int fd_ = open(argv[1],  O_CREAT|O_RDWR|O_APPEND, S_IRWXU);
             if (!fd_)
 			{
-				write(fd, " OPEN ERROR\n", 12);
+				write(mes, " OPEN ERROR\n", 12);
 				syslog (LOG_NOTICE, "Error opening file with command ");
 				flag = -1;
 				break;
 			}
+			char c;
+			int i = 0;
+			int k = 0;
+			while(read(fd_, &c, 1))
+			{	
+				if (c < 0)
+				{
+					write(mes, " READ CMD ERROR\n", 16);
+					syslog (LOG_NOTICE, "Error reading command ");
+					flag = -1;
+					break;
+				}
+				else
+				{
+					if (c != '\n')
+					{
+						cmd[i][k] = c;
+						k++;
+					}
+					else
+					{
+						cmd[i][k] = '\0';
+						k = 0; 
+						i++;
+					}
+					if (i == MAX_COUNT_CMD)
+					{
+						write(mes, " CMD LIMIT\n", 11);
+						syslog (LOG_NOTICE, "Limit of the number of executed commands, not all commands will be executed ");
+						break;
+					}
+				}
+			}
 			
-            int len = read(fd_, stroka, 255);
-            if (!len)
-            {
-				write(fd, " READ ERROR\n", 12);
-				syslog (LOG_NOTICE, "Error reading file ");
-				close(fd_);
-				flag = -1;
+            close(fd_);
+            if (flag == -1)
+			{
 				break;
 			}
-            stroka[len] = '\0';
-            close(fd_);
-            
             int fo = open("out.txt",  O_CREAT|O_RDWR|O_APPEND, S_IRWXU);
             if (!fo)
 			{
-				write(fd, " OPEN ERROR\n", 12);
+				write(mes, " OPEN ERROR\n", 12);
 				syslog (LOG_NOTICE, "Error opening file for output ");
 				flag = -1;
 				break;
 			}
 			
-            fp = popen(stroka, "r");
-            
-            if (fp == NULL)
-            {
-				write(fd, " PIPE ERROR\n", 12);
-				syslog (LOG_NOTICE, "Pipe error ");
-				close(fo);
+            pid_t pid[MAX_COUNT_CMD];
+
+			int count = 1;
+			
+			for(int k = 0; k < i; k++)
+			{
+				int fd[2];
+
+				if (pipe(fd) < 0)
+				{
+				write(mes, " PIPE ERROR\n", 12);
+				syslog (LOG_NOTICE, "Can't create pipe ");
 				flag = -1;
 				break;
+				}
+				
+				pid[k] = fork();
+				if (pid[k] > 0)
+				{
+					char buffer[max_in];
+					
+					close(fd[1]);	 
+					while((count = read(fd[0], buffer, sizeof(buffer))) != 0)
+					{
+						write(fo, buffer, sizeof(buffer));
+					}	
+					write(fo, "\n", 1);     
+					write(fo, "----------", 10);    
+					write(fo, "\n", 1);
+					sem_post(&sema); 
+				}
+				else if (pid[k] == 0)
+				{
+					close(fd[0]);
+					close(1); 					//close descriptor for writing
+					dup2(fd[1],1);			 	//dublicate descriptor
+					char * token = strtok(cmd[k], " ");
+					char * arg[max_in];	
+					char num[max_in];
+					int j = 0;
+					char * cmdd = token; 
+					
+					while(token != NULL) 
+					{
+						
+						arg[j] = token;
+						j++;
+						token = strtok(NULL, " ");
+					}
+					arg[j] = NULL; 
+					
+					sem_wait(&sema);
+					execve(cmdd, arg, NULL); //there filename
+					
+					exit(0);
+				}
+				else
+				{
+					write(mes, " FORK ERROR\n", 12);
+					syslog (LOG_NOTICE, "Can't fork process ");
+					flag = -1;
+					break;
+				}
+				write(mes, " SOME COMMAND COMPLETED\n", 24);
+				syslog (LOG_NOTICE, "Some command completed ");
 			}
-   
-            int fp_ = fileno(fp);
-            while (read(fp_, input, max_in))
-			{
-				write(fo, input, sizeof(input));
-			}
-                    
-            write(fo, "\n", 1);     
-            write(fo, "----------", 10);    
-            write(fo, "\n", 1);            
-    
-            pclose(fp);
+
             close(fo);
-            write(fd, " COMMAND COMPLETED\n", 19);
-			syslog (LOG_NOTICE, "Command completed ");
+            if (flag == -1)
+            {
+				break;
+			} 
+            
             sig_alarm = false;
-           
         }
-        
         if (sig_term == true)
         {
 			break;
         }              
     }
-    
-    close(fd);
+    sem_destroy(&sema);
+    write(mes, " END\n", 5);
+    close(mes);
     return flag;
 }
  
@@ -154,11 +238,11 @@ int main(int argc, char* argv[]) //--это наша главная процед
 	{
 		syslog (LOG_NOTICE, "Error :c ");
 	}
-   
-   
+    
     syslog (LOG_NOTICE, "My daemon terminated XX ");
     closelog();
    
     return 0;
 }
+
 

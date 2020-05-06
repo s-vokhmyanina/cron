@@ -1,0 +1,5 @@
+/bin/ls -l
+/bin/ps -ejH
+/bin/ls -S
+/bin/ls -i
+

@@ -38,9 +38,15 @@ int Daemon(char* argv[])
     int flag = 0;
     int mes = open("/tmp/mes.daemon.txt", O_CREAT|O_RDWR|O_APPEND, S_IRWXU);
     ftruncate(mes,0);
-	sem_init(&sema, 1, 1);
+	if(sem_init(&sema, 0, 1) == -1)
+	{
+		write(mes, " SEMA INIT ERROR\n", 12);
+		syslog (LOG_NOTICE, "Error with init semaphore ");
+		return -1;
+	}
+	
     char buf[] = " ~ALARM~ \n";
-   
+    
     while(1)
     {      
         pause();
@@ -84,9 +90,12 @@ int Daemon(char* argv[])
 					}
 					else
 					{
-						cmd[i][k] = '\0';
-						k = 0; 
-						i++;
+						if (k != 0)
+							{
+								cmd[i][k] = '\0';
+								k = 0; 
+								i++;
+							}
 					}
 					if (i == MAX_COUNT_CMD)
 					{
@@ -117,7 +126,7 @@ int Daemon(char* argv[])
 			
 			for(int k = 0; k < i; k++)
 			{
-				int fd[2];
+				/*int fd[2];
 
 				if (pipe(fd) < 0)
 				{
@@ -125,12 +134,12 @@ int Daemon(char* argv[])
 				syslog (LOG_NOTICE, "Can't create pipe ");
 				flag = -1;
 				break;
-				}
+				}*/
 				
 				pid[k] = fork();
 				if (pid[k] > 0)
 				{
-					char buffer[max_in];
+					/*char buffer[max_in];
 					
 					close(fd[1]);	 
 					while((count = read(fd[0], buffer, sizeof(buffer))) != 0)
@@ -139,14 +148,12 @@ int Daemon(char* argv[])
 					}	
 					write(fo, "\n", 1);     
 					write(fo, "----------", 10);    
-					write(fo, "\n", 1);
-					sem_post(&sema); 
+					write(fo, "\n", 1);*/
+					 
 				}
 				else if (pid[k] == 0)
 				{
-					close(fd[0]);
-					close(1); 					//close descriptor for writing
-					dup2(fd[1],1);			 	//dublicate descriptor
+					
 					char * token = strtok(cmd[k], " ");
 					char * arg[max_in];	
 					char num[max_in];
@@ -162,10 +169,45 @@ int Daemon(char* argv[])
 					}
 					arg[j] = NULL; 
 					
-					sem_wait(&sema);
-					execve(cmdd, arg, NULL); //there filename
-					
-					exit(0);
+					if (sem_wait(&sema) == -1)
+					{
+						write(mes, " SEMA WAIT ERROR\n", 17);
+						syslog (LOG_NOTICE, "Some error with semaphore (wait) ");
+						flag = -1;
+						break;
+					}
+					else
+					{
+						char log_mes[40];
+						sprintf(log_mes, "%s%d%s", " COMMAND  (", k+1, ") STARTED\n");
+						write(mes, log_mes, sizeof(log_mes));	
+						close(1);
+						if (dup2(fo, 1) == -1)
+				        {
+							write(mes, " DUPLICATE ERROR\n", 17);
+							syslog (LOG_NOTICE, "Some error with duplicate ");
+							flag = -1;
+							break;
+						}	
+						if (execve(cmdd, arg, NULL) == -1)
+						{
+							write(mes, " EXEC ERROR\n", 12);
+							syslog (LOG_NOTICE, "Some error with exec ");
+							flag = -1;
+							break;
+						}	 	
+						if (sem_post(&sema) == -1)
+						{
+							write(mes, " SEMA POST ERROR\n", 17);
+							syslog (LOG_NOTICE, "Some error with semaphore (post) ");
+							flag = -1;
+							break;
+						}			
+						/*close(fd[0]);
+						close(1); 					
+						dup2(fd[1],1);*/	
+					}
+					//exit(0);
 				}
 				else
 				{
@@ -174,7 +216,7 @@ int Daemon(char* argv[])
 					flag = -1;
 					break;
 				}
-				write(mes, " SOME COMMAND COMPLETED\n", 24);
+				//write(mes, " SOME COMMAND COMPLETED\n", 24);
 				syslog (LOG_NOTICE, "Some command completed ");
 			}
 
@@ -203,7 +245,7 @@ int main(int argc, char* argv[]) //--это наша главная процед
  
     if((pid=fork())<0) //--здесь мы пытаемся создать дочерний процесс главного процесса (масло масляное в прямом смысле)
     {                   //--точную копию исполняемой программы
-     printf(" Can't fork :c \n"); //--если нам по какой-либо причине это сделать не удается выходим с ошибкой.
+     printf(" Can't fork :c\n"); //--если нам по какой-либо причине это сделать не удается выходим с ошибкой.
      exit(1);                //--здесь, кто не совсем понял нужно обратится к man fork
     }
     else if (pid!=0) //--если дочерний процесс уже существует
@@ -238,7 +280,6 @@ int main(int argc, char* argv[]) //--это наша главная процед
 	{
 		syslog (LOG_NOTICE, "Error :c ");
 	}
-    
     syslog (LOG_NOTICE, "My daemon terminated XX ");
     closelog();
    

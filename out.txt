@@ -1,0 +1,377 @@
+
+808569 al
+808573 al_vokh
+805816 al_vokh.c
+808570 al_vokh_1
+805873 al_vokh_1.c
+790021 cmd.txt
+800793 cmmd.txt
+800797 daemons
+801750 daemons.c
+800709 daemons.o
+801764 daemons_v1.c
+801766 daemons_v2.c
+804670 daemons_v3
+801770 daemons_v3.c
+790028 daemons_v4
+788617 daemons_v4.c
+800723 dem
+788953 dem.c
+788954 dem.o
+800719 fork1
+789406 fork1.c
+800715 fork2
+800711 fork2.c
+800734 fork3
+800725 fork3.c
+788775 home2
+800190 home2.c
+800733 home3
+800780 home3.c
+800736 homee3
+800713 homee3.c
+788620 log.txt
+788619 out.txt
+790019 output.txt
+800722 pipee
+788945 pipee.c
+788946 test.file.txt
+801754 vbh
+790964 vbh.c
+801757 vbh1
+800792 vbh1.c
+801759 vbh2
+790965 vbh2.c
+801761 vbh3
+801751 vbh3.c
+total 424
+-rwxr-xr-x 1 lulerz lulerz  8392 Feb 18 17:58 al
+-rwxr-xr-x 1 lulerz lulerz  8392 Feb 18 18:16 al_vokh
+-rwxrwx--- 1 lulerz lulerz   318 Feb 18 18:13 al_vokh.c
+-rwxr-xr-x 1 lulerz lulerz  8392 Feb 18 18:09 al_vokh_1
+-rw-rw-r-- 1 lulerz lulerz   318 Feb 18 18:13 al_vokh_1.c
+-rw-r--r-- 1 lulerz lulerz    47 Apr 23 16:39 cmd.txt
+-rwx------ 1 lulerz lulerz     0 Mar 17 23:54 cmmd.txt
+-rwxr-xr-x 1 lulerz lulerz 13344 Apr  9 17:03 daemons
+-rw-rw-r-- 1 lulerz lulerz  3952 Apr  9 16:06 daemons.c
+-rw-rw-r-- 1 lulerz lulerz  3560 Mar  3 21:40 daemons.o
+-rw-rw-r-- 1 lulerz lulerz  4569 Apr 14 16:01 daemons_v1.c
+-rw-rw-r-- 1 lulerz lulerz  4484 Apr 14 16:53 daemons_v2.c
+-rwxr-xr-x 1 lulerz lulerz 13424 Apr 15 18:10 daemons_v3
+-rw-rw-r-- 1 lulerz lulerz  5439 Apr 15 18:10 daemons_v3.c
+-rwxr-xr-x 1 lulerz lulerz 13600 Apr 23 16:39 daemons_v4
+-rw-rw-r-- 1 lulerz lulerz  6590 Apr 23 16:36 daemons_v4.c
+-rwxr-xr-x 1 lulerz lulerz  8704 Mar  3 16:26 dem
+-rw-rw-r-- 1 lulerz lulerz  2299 Mar  3 16:25 dem.c
+-rw-rw-r-- 1 lulerz lulerz  2808 Mar  3 16:24 dem.o
+-rwxr-xr-x 1 lulerz lulerz  8744 Feb 20 10:36 fork1
+-rwxr-xr-x 1 lulerz lulerz  1157 Feb 25 17:44 fork1.c
+-rwxr-xr-x 1 lulerz lulerz  8344 Mar  3 18:04 fork2
+-rw-rw-r-- 1 lulerz lulerz   569 Mar  3 18:04 fork2.c
+-rwxr-xr-x 1 lulerz lulerz  8864 Mar  5 10:21 fork3
+-rw-rw-r-- 1 lulerz lulerz  1180 Mar  5 10:21 fork3.c
+-rwxr-xr-x 1 lulerz lulerz  8736 Feb 25 17:42 home2
+-rw-rw-r-- 1 lulerz lulerz   786 Feb 25 17:42 home2.c
+-rwxr-xr-x 1 lulerz lulerz 12920 Mar 12 10:22 home3
+-rw-rw-r-- 1 lulerz lulerz  1301 Mar 12 10:22 home3.c
+-rwxr-xr-x 1 lulerz lulerz  8784 Mar 11 18:42 homee3
+-rw-rw-r-- 1 lulerz lulerz  1228 Mar 11 18:42 homee3.c
+-rwx------ 1 lulerz lulerz     1 Apr 23 15:41 log.txt
+-rwx------ 1 lulerz lulerz   681 Apr 23 16:39 out.txt
+-rwx------ 1 lulerz lulerz 45093 Apr 23 15:24 output.txt
+-rwxr-xr-x 1 lulerz lulerz  8568 Feb 27 10:02 pipee
+-rw-rw-r-- 1 lulerz lulerz   824 Feb 27 10:02 pipee.c
+-rwx------ 1 lulerz lulerz    36 Feb 27 10:02 test.file.txt
+-rwxr-xr-x 1 lulerz lulerz 13336 Apr  9 12:52 vbh
+-rw-rw-r-- 1 lulerz lulerz  3952 Apr  9 12:50 vbh.c
+-rwxr-xr-x 1 lulerz lulerz 13336 Apr  9 15:26 vbh1
+-rw-rw-r-- 1 lulerz lulerz  5034 Apr  9 13:59 vbh1.c
+-rwxr-xr-x 1 lulerz lulerz 13336 Apr  9 16:08 vbh2
+-rw-rw-r-- 1 lulerz lulerz  4587 Apr  9 16:38 vbh2.c
+-rwxr-xr-x 1 lulerz lulerz 13336 Apr  9 16:39 vbh3
+-rw-rw-r-- 1 lulerz lulerz  4502 Apr  9 16:39 vbh3.c
+output.txt
+daemons_v4
+daemons_v3
+daemons
+vbh
+vbh1
+vbh2
+vbh3
+home3
+fork3
+homee3
+fork1
+home2
+dem
+pipee
+al
+al_vokh
+al_vokh_1
+fork2
+daemons_v4.c
+daemons_v3.c
+vbh1.c
+vbh2.c
+daemons_v1.c
+vbh3.c
+daemons_v2.c
+daemons.c
+vbh.c
+daemons.o
+out.txt
+dem.o
+dem.c
+home3.c
+homee3.c
+fork3.c
+fork1.c
+pipee.c
+home2.c
+fork2.c
+al_vokh.c
+al_vokh_1.c
+cmd.txt
+test.file.txt
+log.txt
+cmmd.txt
+  PID  PGID   SID TTY          TIME CMD
+    2     0     0 ?        00:00:00 kthreadd
+    3     0     0 ?        00:00:00   rcu_gp
+    4     0     0 ?        00:00:00   rcu_par_gp
+    6     0     0 ?        00:00:00   kworker/0:0H-kb
+    9     0     0 ?        00:00:00   mm_percpu_wq
+   10     0     0 ?        00:00:00   ksoftirqd/0
+   11     0     0 ?        00:00:02   rcu_sched
+   12     0     0 ?        00:00:00   migration/0
+   13     0     0 ?        00:00:00   idle_inject/0
+   14     0     0 ?        00:00:00   cpuhp/0
+   15     0     0 ?        00:00:00   cpuhp/1
+   16     0     0 ?        00:00:00   idle_inject/1
+   17     0     0 ?        00:00:00   migration/1
+   18     0     0 ?        00:00:00   ksoftirqd/1
+   20     0     0 ?        00:00:00   kworker/1:0H-kb
+   21     0     0 ?        00:00:00   cpuhp/2
+   22     0     0 ?        00:00:00   idle_inject/2
+   23     0     0 ?        00:00:00   migration/2
+   24     0     0 ?        00:00:00   ksoftirqd/2
+   26     0     0 ?        00:00:00   kworker/2:0H-kb
+   27     0     0 ?        00:00:00   kdevtmpfs
+   28     0     0 ?        00:00:00   netns
+   29     0     0 ?        00:00:00   rcu_tasks_kthre
+   30     0     0 ?        00:00:00   kauditd
+   31     0     0 ?        00:00:00   khungtaskd
+   32     0     0 ?        00:00:00   oom_reaper
+   33     0     0 ?        00:00:00   writeback
+   34     0     0 ?        00:00:00   kcompactd0
+   35     0     0 ?        00:00:00   ksmd
+   36     0     0 ?        00:00:00   khugepaged
+  129     0     0 ?        00:00:00   kintegrityd
+  130     0     0 ?        00:00:00   kblockd
+  131     0     0 ?        00:00:00   blkcg_punt_bio
+  132     0     0 ?        00:00:00   tpm_dev_wq
+  133     0     0 ?        00:00:00   ata_sff
+  134     0     0 ?        00:00:00   md
+  135     0     0 ?        00:00:00   edac-poller
+  136     0     0 ?        00:00:00   devfreq_wq
+  138     0     0 ?        00:00:00   watchdogd
+  141     0     0 ?        00:00:00   kswapd0
+  142     0     0 ?        00:00:00   kworker/u7:0
+  143     0     0 ?        00:00:00   ecryptfs-kthrea
+  146     0     0 ?        00:00:00   kthrotld
+  147     0     0 ?        00:00:00   acpi_thermal_pm
+  148     0     0 ?        00:00:00   scsi_eh_0
+  149     0     0 ?        00:00:00   scsi_tmf_0
+  150     0     0 ?        00:00:00   scsi_eh_1
+  151     0     0 ?        00:00:00   scsi_tmf_1
+  154     0     0 ?        00:00:00   ipv6_addrconf
+  165     0     0 ?        00:00:00   kstrp
+  184     0     0 ?        00:00:00   charger_manager
+  185     0     0 ?        00:00:00   kworker/0:1H-kb
+  225     0     0 ?        00:00:00   scsi_eh_2
+  226     0     0 ?        00:00:00   scsi_tmf_2
+  229     0     0 ?        00:00:00   kworker/2:1H-kb
+  251     0     0 ?        00:00:00   kworker/1:1H-kb
+  252     0     0 ?        00:00:00   jbd2/sda1-8
+  253     0     0 ?        00:00:00   ext4-rsv-conver
+  331     0     0 ?        00:00:00   loop0
+  338     0     0 ?        00:00:00   loop1
+  339     0     0 ?        00:00:00   loop2
+  343     0     0 ?        00:00:00   loop3
+  358     0     0 ?        00:00:00   loop4
+  361     0     0 ?        00:00:00   loop5
+  369     0     0 ?        00:00:00   loop6
+  381     0     0 ?        00:00:00   loop7
+  404     0     0 ?        00:00:00   loop9
+  416     0     0 ?        00:00:00   loop10
+  426     0     0 ?        00:00:00   loop11
+  428     0     0 ?        00:00:00   loop12
+  435     0     0 ?        00:00:00   loop13
+  442     0     0 ?        00:00:00   loop14
+  451     0     0 ?        00:00:00   loop15
+  462     0     0 ?        00:00:00   iprt-VBoxWQueue
+  535     0     0 ?        00:00:01   irq/18-vmwgfx
+  537     0     0 ?        00:00:00   ttm_swap
+  622     0     0 ?        00:00:00   cryptd
+ 1720     0     0 ?        00:00:00   loop16
+ 6775     0     0 ?        00:00:00   kworker/1:0-eve
+ 6943     0     0 ?        00:00:00   kworker/0:0-eve
+ 7159     0     0 ?        00:00:00   kworker/0:1-eve
+ 7191     0     0 ?        00:00:01   kworker/2:2-eve
+ 7404     0     0 ?        00:00:00   kworker/u6:0-ev
+ 7564     0     0 ?        00:00:00   kworker/1:1-eve
+ 7596     0     0 ?        00:00:00   kworker/2:0-cgr
+ 7597     0     0 ?        00:00:00   kworker/u6:1-ev
+    1     1     1 ?        00:00:05 systemd
+  288   288   288 ?        00:00:00   systemd-journal
+  305   305   305 ?        00:00:00   systemd-udevd
+  402   402   402 ?        00:00:00   systemd-resolve
+  491   491   491 ?        00:00:00   avahi-daemon
+  503   491   491 ?        00:00:00     avahi-daemon
+  493   493   493 ?        00:00:02   dbus-daemon
+  532   532   532 ?        00:00:00   cron
+  533   533   533 ?        00:00:00   accounts-daemon
+  542   542   542 ?        00:00:00   NetworkManager
+  729   729   542 ?        00:00:00     dhclient
+  543   543   543 ?        00:00:00   wpa_supplicant
+  545   545   545 ?        00:00:00   systemd-logind
+  547   547   547 ?        00:00:00   rsyslogd
+  554   554   554 ?        00:00:00   irqbalance
+  558   558   558 ?        00:00:00   ModemManager
+  560   560   560 ?        00:00:00   networkd-dispat
+  568   568   568 ?        00:00:00   acpid
+  575   575   575 ?        00:00:00   udisksd
+  579   579   579 ?        00:00:00   atd
+  587   587   587 ?        00:00:10   snapd
+  627   627   627 ?        00:00:00   polkitd
+  648   648   648 ?        00:00:00   unattended-upgr
+  761   761   761 ?        00:00:00   whoopsie
+  777   777   777 ?        00:00:00   kerneloops
+  779   779   779 ?        00:00:00   kerneloops
+ 1309  1308  1308 ?        00:00:00   VBoxClient
+ 1310  1308  1308 ?        00:00:00     VBoxClient
+ 1325  1325  1325 ?        00:00:00   gdm3
+ 1345  1325  1325 ?        00:00:00     gdm-session-wor
+ 1366  1366  1366 tty1     00:00:00       gdm-wayland-ses
+ 1370  1366  1366 tty1     00:00:00         gnome-session-b
+ 1376  1366  1366 tty1     00:00:11           gnome-shell
+ 1394  1366  1366 tty1     00:00:00             Xwayland
+ 1427  1427  1366 tty1     00:00:00             ibus-daemon
+ 1430  1427  1366 tty1     00:00:00               ibus-dconf
+ 1554  1427  1366 tty1     00:00:00               ibus-engine-sim
+ 1462  1366  1366 tty1     00:00:00           gsd-xsettings
+ 1465  1366  1366 tty1     00:00:00           gsd-a11y-settin
+ 1468  1366  1366 tty1     00:00:00           gsd-clipboard
+ 1471  1366  1366 tty1     00:00:01           gsd-color
+ 1472  1366  1366 tty1     00:00:00           gsd-datetime
+ 1473  1366  1366 tty1     00:00:00           gsd-housekeepin
+ 1475  1366  1366 tty1     00:00:00           gsd-keyboard
+ 1478  1366  1366 tty1     00:00:00           gsd-media-keys
+ 1480  1366  1366 tty1     00:00:00           gsd-mouse
+ 1483  1366  1366 tty1     00:00:00           gsd-power
+ 1488  1366  1366 tty1     00:00:00           gsd-print-notif
+ 1492  1366  1366 tty1     00:00:00           gsd-rfkill
+ 1495  1366  1366 tty1     00:00:00           gsd-screensaver
+ 1501  1366  1366 tty1     00:00:00           gsd-sharing
+ 1510  1366  1366 tty1     00:00:00           gsd-smartcard
+ 1512  1366  1366 tty1     00:00:00           gsd-sound
+ 1514  1366  1366 tty1     00:00:00           gsd-wacom
+ 1674  1325  1325 ?        00:00:00     gdm-session-wor
+ 1747  1747  1747 tty2     00:00:00       gdm-x-session
+ 1749  1747  1747 tty2     00:05:32         Xorg
+ 1762  1747  1747 tty2     00:00:00         gnome-session-b
+ 1898  1898  1898 ?        00:00:00           ssh-agent
+ 1936  1747  1747 tty2     00:22:24           gnome-shell
+ 1978  1978  1747 tty2     00:00:13             ibus-daemon
+ 1982  1978  1747 tty2     00:00:00               ibus-dconf
+ 2277  1978  1747 tty2     00:00:03               ibus-engine-sim
+ 6403  1747  1747 tty2     00:03:41             geany
+ 6418  6418  6418 pts/2    00:00:00               bash
+ 2057  1747  1747 tty2     00:00:00           gsd-power
+ 2058  1747  1747 tty2     00:00:00           gsd-print-notif
+ 2061  1747  1747 tty2     00:00:00           gsd-rfkill
+ 2064  1747  1747 tty2     00:00:00           gsd-screensaver
+ 2067  1747  1747 tty2     00:00:00           gsd-sharing
+ 2068  1747  1747 tty2     00:00:00           gsd-sound
+ 2075  1747  1747 tty2     00:00:00           gsd-xsettings
+ 2076  1747  1747 tty2     00:00:00           gsd-wacom
+ 2079  1747  1747 tty2     00:00:00           gsd-smartcard
+ 2088  1747  1747 tty2     00:00:00           gsd-a11y-settin
+ 2089  1747  1747 tty2     00:00:00           gsd-clipboard
+ 2090  1747  1747 tty2     00:00:01           gsd-color
+ 2093  1747  1747 tty2     00:00:00           gsd-datetime
+ 2099  1747  1747 tty2     00:00:00           gsd-housekeepin
+ 2100  1747  1747 tty2     00:00:00           gsd-keyboard
+ 2105  1747  1747 tty2     00:00:00           gsd-media-keys
+ 2108  1747  1747 tty2     00:00:00           gsd-mouse
+ 2160  1747  1747 tty2     00:00:03           nautilus-deskto
+ 2165  1747  1747 tty2     00:00:00           gsd-disk-utilit
+ 2387  1747  1747 tty2     00:00:00           update-notifier
+ 2389  1747  1747 tty2     00:00:10           gnome-software
+ 4813  1747  1747 tty2     00:00:00           deja-dup-monito
+ 1329  1328  1328 ?        00:00:01   VBoxService
+ 1354  1354  1354 ?        00:00:00   systemd
+ 1355  1354  1354 ?        00:00:00     (sd-pam)
+ 1368  1368  1368 ?        00:00:00     dbus-daemon
+ 1400  1400  1400 ?        00:00:00     at-spi-bus-laun
+ 1405  1400  1400 ?        00:00:00       dbus-daemon
+ 1407  1400  1400 ?        00:00:00     at-spi2-registr
+ 1411  1411  1411 ?        00:00:00     pulseaudio
+ 1438  1368  1368 ?        00:00:00     ibus-portal
+ 1443  1443  1443 ?        00:00:00     xdg-permission-
+ 1383  1383  1383 ?        00:00:00   upowerd
+ 1412  1412  1412 ?        00:00:00   rtkit-daemon
+ 1432  1427  1366 tty1     00:00:00   ibus-x11
+ 1457  1457  1457 ?        00:00:00   boltd
+ 1458  1458  1458 ?        00:00:14   packagekitd
+ 1535  1535  1535 ?        00:00:00   colord
+ 1729  1729  1729 ?        00:00:00   systemd
+ 1730  1729  1729 ?        00:00:00     (sd-pam)
+ 1759  1759  1759 ?        00:00:00     dbus-daemon
+ 1904  1904  1904 ?        00:00:00     at-spi-bus-laun
+ 1909  1904  1904 ?        00:00:00       dbus-daemon
+ 1911  1904  1904 ?        00:00:01     at-spi2-registr
+ 1948  1948  1948 ?        00:00:00     gvfsd
+ 2216  1948  1948 ?        00:00:00       gvfsd-trash
+ 6446  1948  1948 ?        00:00:00       gvfsd-network
+ 6477  1948  1948 ?        00:00:00       gvfsd-dnssd
+ 1953  1948  1948 ?        00:00:00     gvfsd-fuse
+ 1986  1986  1986 ?        00:00:00     xdg-permission-
+ 1990  1759  1759 ?        00:00:00     ibus-portal
+ 2002  1759  1759 ?        00:00:00     gnome-shell-cal
+ 2006  2006  2006 ?        00:00:00     evolution-sourc
+ 2014  1759  1759 ?        00:00:00     goa-daemon
+ 2027  1759  1759 ?        00:00:00     goa-identity-se
+ 2031  1759  1759 ?        00:00:00     dconf-service
+ 2035  2035  2035 ?        00:00:00     gvfs-udisks2-vo
+ 2040  2040  2040 ?        00:00:00     gvfs-goa-volume
+ 2044  2044  2044 ?        00:00:00     gvfs-afc-volume
+ 2049  2049  2049 ?        00:00:00     gvfs-gphoto2-vo
+ 2053  2053  2053 ?        00:00:00     gvfs-mtp-volume
+ 2249  2249  2249 ?        00:00:00     evolution-calen
+ 2292  2249  2249 ?        00:00:00       evolution-calen
+ 2303  2303  2303 ?        00:00:00     evolution-addre
+ 2314  2303  2303 ?        00:00:00       evolution-addre
+ 2330  2330  2330 ?        00:00:00     gvfsd-metadata
+ 6380  6380  6380 ?        00:00:27     gnome-terminal-
+ 6389  6389  6389 pts/0    00:00:01       bash
+ 6428  6428  6428 pts/3    00:00:00       bash
+ 7139  7139  7139 ?        00:00:00     zeitgeist-daemo
+ 7145  7145  7145 ?        00:00:00     zeitgeist-fts
+ 7768  7768  7768 ?        00:00:00     daemons_v4
+ 7772  7768  7768 ?        00:00:00       ps
+ 1743  1742  1742 ?        00:00:00   gnome-keyring-d
+ 1863  1859  1859 ?        00:00:00   VBoxClient
+ 1864  1859  1859 ?        00:00:00     VBoxClient
+ 1871  1869  1869 ?        00:00:00   VBoxClient
+ 1872  1869  1869 ?        00:00:00     VBoxClient
+ 1879  1877  1877 ?        00:00:00   VBoxClient
+ 1880  1877  1877 ?        00:00:00     VBoxClient
+ 1889  1882  1882 ?        00:00:00   VBoxClient
+ 1890  1882  1882 ?        00:00:19     VBoxClient
+ 1964  1963  1963 ?        00:00:00   pulseaudio
+ 1985  1978  1747 tty2     00:00:00   ibus-x11
+ 2143  1747  1747 tty2     00:00:00   gsd-printer
+ 2425  2425  2425 ?        00:00:00   fwupd
+ 6618  6618  6618 ?        00:00:00   cupsd
+ 6619  6619  6619 ?        00:00:00   cups-browsed

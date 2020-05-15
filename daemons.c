@@ -13,9 +13,11 @@
 #define MAX_COUNT_CMD 10
 
 sem_t sema;
-
 bool sig_alarm = false;
 bool sig_term = false;
+bool sig_child = false;
+
+int flag = 0;
  
 void signal_alarm_handler()
 {
@@ -27,6 +29,23 @@ void signal_term_handler()
     sig_term = true;
 }
  
+ void signal_child_handler()
+{
+    //sig_child = true;
+    int status;
+    wait(&status);
+	if (WIFEXITED(status) == 0)
+	{
+		flag = -1;
+	}
+	sig_child = false;
+
+	if (sem_post(&sema) == -1)
+	{
+		flag = -1;
+	}
+}
+ 
 int Daemon(char* argv[])
 {
    
@@ -34,8 +53,7 @@ int Daemon(char* argv[])
        
     signal(SIGALRM, signal_alarm_handler);
     signal(SIGTERM, signal_term_handler);
-    signal(SIGCLD, SIG_IGN);					
-    int flag = 0;
+    signal(SIGCHLD, signal_child_handler);					
     int mes = open("/tmp/mes.daemon.txt", O_CREAT|O_RDWR|O_APPEND, S_IRWXU);
     ftruncate(mes,0);
 	if(sem_init(&sema, 0, 1) == -1)
@@ -122,8 +140,8 @@ int Daemon(char* argv[])
 			
             pid_t pid[MAX_COUNT_CMD];
 
-			int count = 1;
-			
+			//int count = 1;
+			//int status;
 			for(int k = 0; k < i; k++)
 			{
 				/*int fd[2];
@@ -149,7 +167,37 @@ int Daemon(char* argv[])
 					write(fo, "\n", 1);     
 					write(fo, "----------", 10);    
 					write(fo, "\n", 1);*/
-					 
+					/*while(1)
+					{
+						pause();
+						if (sig_child == true)
+						{
+							wait(&status);
+							if (WIFEXITED(status) == 0)
+							{
+								write(mes, " WAIT CHILD ERROR\n", 18);
+								syslog (LOG_NOTICE, "Some error with child (wait) ");
+								flag = -1;
+								break;
+							}
+							sig_child = false;
+
+							if (sem_post(&sema) == -1)
+							{
+								write(mes, " SEMA POST ERROR\n", 17);
+								syslog (LOG_NOTICE, "Some error with semaphore (post) ");
+								flag = -1;
+								break;
+							}
+							break;
+						}
+					}*/	
+					if (flag == -1)
+					{
+						write(mes, " WAIT CHILD OR SEMA POST ERROR\n", 31);
+						syslog (LOG_NOTICE, "Some error with wait (child) or semaphore (post) ");
+						break;
+					} 
 				}
 				else if (pid[k] == 0)
 				{
@@ -181,8 +229,8 @@ int Daemon(char* argv[])
 						char log_mes[40];
 						sprintf(log_mes, "%s%d%s", " COMMAND  (", k+1, ") STARTED\n");
 						write(mes, log_mes, sizeof(log_mes));	
-						close(1);
-						if (dup2(fo, 1) == -1)
+						close(1);						
+				        if (dup2(fo, 1) == -1)
 				        {
 							write(mes, " DUPLICATE ERROR\n", 17);
 							syslog (LOG_NOTICE, "Some error with duplicate ");
@@ -195,14 +243,7 @@ int Daemon(char* argv[])
 							syslog (LOG_NOTICE, "Some error with exec ");
 							flag = -1;
 							break;
-						}	 	
-						if (sem_post(&sema) == -1)
-						{
-							write(mes, " SEMA POST ERROR\n", 17);
-							syslog (LOG_NOTICE, "Some error with semaphore (post) ");
-							flag = -1;
-							break;
-						}			
+						}	 			
 						/*close(fd[0]);
 						close(1); 					
 						dup2(fd[1],1);*/	
@@ -285,5 +326,6 @@ int main(int argc, char* argv[]) //--это наша главная процед
    
     return 0;
 }
+
 
 
